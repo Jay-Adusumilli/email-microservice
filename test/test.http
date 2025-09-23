@@ -1,0 +1,43 @@
+### Test: Send confirmation email
+POST http://localhost:8000/send
+Content-Type: application/json
+
+{
+  "to": "example@domain.com",
+  "subject": "Confirm your account",
+  "template": "confirmation",
+  "variables": {
+    "username": "Jay",
+    "confirm_url": "https://example.com/confirm/abc123"
+  }
+}
+
+### Test: Send reset password email
+POST http://localhost:8000/send
+Content-Type: application/json
+
+{
+  "to": "example@domain.com",
+  "subject": "Reset your password",
+  "template": "reset_password",
+  "variables": {
+    "username": "Jay",
+    "reset_url": "https://example.com/reset/xyz789",
+    "expiry_hours": 24
+  }
+}
+
+### Test: Send generic notification email
+POST http://localhost:8000/send
+Content-Type: application/json
+
+{
+  "to": "example@domain.com",
+  "subject": "Security Notice",
+  "template": "notification",
+  "variables": {
+    "username": "Jay",
+    "message": "We noticed a login from a new device.",
+    "support_email": "support@example.com"
+  }
+}
